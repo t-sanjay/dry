@@ -4,9 +4,6 @@
 
 curl -fsSL https://deb.nodesource.com/setup_14.x | bash - </br>
 sudo apt-get install -y nodejs </br>
-npm i -g @ionic/cli </br>
 
-16
-27
-2
-45 - 8 = 37k
+git config --global user.email "t-sanjay@hotmail.com"
+git config --global user.name "Kite04"
