@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  applicationVerifier: any;
+  constructor(public auth: AngularFireAuth) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+  
+  login(){
+    this.applicationVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    const phoneNumber = '+917058677407';
+    firebase.auth().signInWithPhoneNumber(phoneNumber, this.applicationVerifier)
+    .then((confirmationResult) => {
+      var verificationCode = window.prompt('Please enter the verification ' +
+          'code that was sent to your mobile device.');
+      return confirmationResult.confirm(verificationCode);
+    })
+    .catch((error) => {
+      // Handle Errors here.
+    });
+  }
 
 }

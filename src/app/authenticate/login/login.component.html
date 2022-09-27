@@ -1,28 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">D-R-Y</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <div class="container">
-    <div class="center" style="height: 20vh">
-      <h1>DRY</h1>
-    </div>
-    <div class="center card">
-      <div class="p-grid p-fluid">
+    <div class="center">
+      <div class="p-grid p-fluid" style="width:80%; margin-top:30%;">
 
-        <div style="margin-bottom: 30px;">
-          <ion-input type="tel" maxlength="10" value="" placeholder="Mobile No."></ion-input>
+        <div class="center" style="margin-bottom: 30px;">
+          <ion-img src="../../../assets/icon/icon.png" style="width:80%"></ion-img>
         </div>
-        <div>
-          <ion-input type="password" maxlength="4"  value="" placeholder="PIN"></ion-input>
+        <div class="center" style="margin-top: 4rem;">
+          <ion-input style="font-size: 18px;" type="tel" maxlength="10" value="" placeholder="Enter phone number"></ion-input>
         </div>
-
-        <div class="center" style="margin-top: 2.5em;">
-          <ion-button fill="outline">Login</ion-button>
+        <div id="recaptcha-container"></div>
+        <div class="right" style="margin-top: 1em;">
+          <ion-button fill="outline" (click)="login()">Send OTP  &nbsp;<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
         </div>
 
 
 
       </div>
-    </div>
-    <div class="center" style="height: 20vh;">
-      <!-- <p>Test 3</p> -->
     </div>
   </div>
 </ion-content>

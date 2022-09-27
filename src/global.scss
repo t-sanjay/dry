@@ -27,7 +27,6 @@
 
 .container{
     width: 100%;
-    height: 100vh;
     padding-left: 0px;
 }
 
@@ -36,9 +35,23 @@
     justify-content: center;
     align-items: center;
 }
+.right{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
 
 ion-input{
     --padding-start: 14px!important;
     border: 2px solid black;
-    border-radius: 20px;
+    border-radius: 5px;
 }
+
+ion-button{
+    --border-color: #FFBF1B;
+    --background: #FFBF1B;
+    --color: black;
+}
+ion-button {
+    text-transform: none;
+   }
