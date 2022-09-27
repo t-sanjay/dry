@@ -36,3 +36,9 @@
     justify-content: center;
     align-items: center;
 }
+
+ion-input{
+    --padding-start: 14px!important;
+    border: 2px solid black;
+    border-radius: 20px;
+}
