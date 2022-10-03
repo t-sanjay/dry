@@ -3,8 +3,8 @@
     <ion-title size="large">D-R-Y</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="container">
+<ion-content scroll-y="false">
+  <!-- <div class="container">
     <div class="center">
       <div class="p-grid p-fluid" style="width:80%; margin-top:30%;">
 
@@ -19,9 +19,89 @@
           <ion-button fill="outline" (click)="login()">Send OTP  &nbsp;<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
         </div>
 
+        <div>
+          <ion-input type="tel" maxlength="1"></ion-input>
+        </div>
+
 
 
       </div>
     </div>
+  </div> -->
+
+  <div class="main">
+    <ion-card no-margin>
+      <ion-card-content>
+        <ion-row class="row">
+          <div class="fire-logo">
+            <img src="../../../assets/icon/icon.png" class="img-logo">
+            <ion-text class="ion-padding">
+              <h2 class="ion-no-margin ion-margin-vertical ion-text-center">Welcome to D-R-Y</h2>
+            </ion-text>
+          </div>
+        </ion-row>
+        <ion-row *ngIf="!isOtpValid" class="center">
+          <ion-label style="
+          color: red;
+      ">
+            Verification failed, please enter correct OTP.
+          </ion-label>
+        </ion-row>
+        <ion-grid class="phoneAuthGrid" *ngIf="existingUser && !otpSent">
+         
+          <ion-row>
+            <ion-col size="4">
+              <ion-select class="phoneCountry" value="brown" okText="Okay" cancelText="Dismiss"
+                (ionChange)="countryCodeChange($event)" [value]="CountryCode">
+                <ion-select-option *ngFor="let country of CountryJson" value={{country.dial_code}}>
+                  {{country.dial_code}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="8">
+              <ion-input clearInput type="test" placeholder="Your Contact Number" [(ngModel)]="PhoneNo" ngDefaultControl
+                class="input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="signinWithPhoneNumber($event)" color="undefined"
+                class="btn-transition">
+                Send OTP</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+          <div id="recaptcha-container"></div>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid class="phoneAuthGrid" *ngIf="existingUser && otpSent">
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                OTP sent to phone number {{ PhoneNo }}
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input clearInput type="test" placeholder="Enter OTP" [(ngModel)]="OTP" ngDefaultControl
+                class="input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="verifyOtp($event)" color="undefined"
+                class="btn-transition">
+                Verify OTP</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
   </div>
+
 </ion-content>

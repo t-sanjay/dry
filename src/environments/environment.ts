@@ -13,6 +13,20 @@ export const environment = {
     appId: '1:516267924731:web:30ace7b0a3501a4915e45e',
     measurementId: 'G-BJ64H4D4Z4'
   },
+  CountryJson: [
+    { name: 'India', dial_code: '+91', code: 'IN' },
+    { name: 'Afghanistan', dial_code: '+93', code: 'AF' },
+    { name: 'Albania', dial_code: '+35', code: 'AL' },
+    { name: 'Algeria', dial_code: '+213', code: 'DZ' },
+    { name: 'AmericanSamoa', dial_code: '+1 684', code: 'AS' },
+    { name: 'Andorra', dial_code: '+376', code: 'AD' },
+    { name: 'Angola', dial_code: '+244', code: 'AO' },
+    { name: 'Anguilla', dial_code: '+1 264', code: 'AI' },
+    { name: 'Antigua and Barbuda', dial_code: '+1268', code: 'AG' },
+    { name: 'Argentina', dial_code: '+54', code: 'AR' },
+    { name: 'Armenia', dial_code: '+374', code: 'AM' },
+    { name: 'Aruba', dial_code: '+297', code: 'AW' },
+    ]
 };
 
 /*
