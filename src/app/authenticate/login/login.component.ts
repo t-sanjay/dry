@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { AlertController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -33,27 +34,7 @@ export class LoginComponent {
   isOtpValid = true;
 
 
-  constructor(public auth: AngularFireAuth, private alertController: AlertController) { }
-  
-  // login(){
-  //   this.applicationVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-  //   const phoneNumber = '+917058677407';
-  //   firebase.auth().signInWithPhoneNumber(phoneNumber, this.applicationVerifier)
-  //   .then((confirmationResult) => {
-  //     this.confirmationResult = confirmationResult;
-  //     this.verifyOtp(this.confirmationResult);
-  //     this.showOtpPage = true;
-
-  //   })
-  //   .catch((error) => {
-  //     // Handle Errors here.
-  //   });
-  // }
-
-  // verifyOtp(confirmationResult){
-    
-  // }
-
+  constructor(public auth: AngularFireAuth, private alertController: AlertController, private router: Router, private activatedRoute: ActivatedRoute) { }
   async ionViewDidEnter() {
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
       size: 'invisible',
@@ -76,7 +57,7 @@ export class LoginComponent {
   }
 
   // Button event after the nmber is entered and button is clicked
-  signinWithPhoneNumber($event) {
+  async signinWithPhoneNumber($event) {
     if (this.PhoneNo && this.CountryCode) {
       if(this.checkForExisitingUser){
         this.signInWithPhoneNumber(this.recaptchaVerifier, this.CountryCode + this.PhoneNo).then(
@@ -97,11 +78,15 @@ export class LoginComponent {
     this.enterVerificationCode(this.OTP).then((userData) =>{
       console.log(userData);
       this.isOtpValid = true;
+      if(userData.additionalUserInfo.isNewUser){
+        this.router.navigateByUrl('/authenticate/signup');
+      }else{
+        this.router.navigateByUrl('/home');
+      }
     },
     (err) =>{
       console.log(err);
       this.isOtpValid = false;
-      // this.otpSent = false;
     }
     )
   }

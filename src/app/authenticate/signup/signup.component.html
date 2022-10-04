@@ -1,3 +1,64 @@
-<p>
-  signup works!
-</p>
+<ion-content>
+  <div class="main" >
+    <ion-card no-margin>
+      <ion-card-content>
+        <form [formGroup]="userData"  >
+        <ion-grid>
+          <ion-row class="row">
+            <div class="fire-logo">
+              <img src="../../../assets/icon/icon.png" class="img-logo" alt="dry logo">
+              <ion-text class="ion-padding">
+                <h2 class="ion-no-margin ion-margin-vertical ion-text-center">Please complete your profile</h2>
+              </ion-text>
+            </div>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                Name
+              </ion-label>
+              <ion-input clearInput type="text" placeholder="Full Name" formControlName="name"  ngDefaultControl
+                class="input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                Contact Number
+              </ion-label>
+              <ion-input clearInput type="tel" placeholder="Your Contact Number" formControlName="phoneNo" maxlength="10" ngDefaultControl
+              class="input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                Address
+              </ion-label>
+              <ion-input clearInput type="text" placeholder="Flat No, Society Name" formControlName="address1" ngDefaultControl
+              class="input ion-padding-horizontal" clear-input="true"></ion-input>
+              <ion-input clearInput type="text" placeholder="Landmark" formControlName="address2" ngDefaultControl
+              class="input ion-padding-horizontal" clear-input="true"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" color="undefined" (click)="goToLoginPage()"
+                class="btn-transition">
+                Back</ion-button>
+               
+            </ion-col>
+            <ion-col size="6">
+              <ion-button expand="block"  color="undefined" (click)="saveUserData()"
+              class="btn-transition">
+              Continue</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
